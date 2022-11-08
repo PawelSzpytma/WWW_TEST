@@ -1,0 +1,22 @@
+﻿@viewModel WWW.ViewModels.DefaultViewModel, WWW
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="content">
+        <div class="row">
+            <div class="col">
+                <self:ButtonSelf Text="Check" Click="{command: _root.Check()}">
+                    <PostBack.Handlers>
+                        <dot:ConfirmPostBackHandler Message="Do you really want to submit the form?" />
+                    </PostBack.Handlers>
+
+                </self:ButtonSelf>
+            </div>
+        </div>
+        <dot:Repeater DataSource="{value: _ApiSelf.GetWeatherForecast()}">
+                      <ItemTemplate>
+                          <p>{{value: Date}}</p>
+                      </ItemTemplate>
+                      </dot:Repeater>
+        </div>
+</dot:Content>

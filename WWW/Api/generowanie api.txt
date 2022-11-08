@@ -1,0 +1,5 @@
+Generowanie
+dotvvm api D:\Repos\dotvvm_test\WWW\ create --namespace WWW.Api --cs-path D:\Repos\dotvvm_test\WWW\Api/ApiClient.cs --ts-path D:\Repos\dotvvm_test\WWW\wwwroot/Scripts/ApiClient.ts https://localhost:7153/swagger/v1/swagger.json 
+
+update
+dotvvm api regen
