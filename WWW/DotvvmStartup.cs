@@ -23,6 +23,7 @@ namespace WWW
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add("Default", "", "Views/Default.dothtml");
+            config.RouteTable.Add("Page", "Page", "Views/Page.dothtml");
             config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    
         }
 

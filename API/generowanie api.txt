@@ -1,5 +1,5 @@
 Generowanie
-dotvvm api D:\Repos\dotvvm_test\ create --namespace SystemBileterka.Api --cs-path D:\Repos\Bileterka\SystemBileterka\Api/ApiClient.cs --ts-path D:\Repos\Bileterka\SystemBileterka\wwwroot/Scripts/ApiClient.ts https://localhost:7105/swagger/v1/swagger.json 
+dotvvm api D:\Repos\dotvvm_test\WWW create --namespace WWW.Api --cs-path D:\Repos\dotvvm_test\WWW\Api/ApiClient.cs --ts-path D:\Repos\dotvvm_test\WWW\wwwroot/Scripts/ApiClient.ts https://localhost:7153/swagger/v1/swagger.json
 
 update
 dotvvm api regen

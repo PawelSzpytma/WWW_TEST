@@ -25,10 +25,15 @@ var WWW;
                 this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
             }
             /**
+             * @param filtr (optional)
              * @return Success
              */
-            getWeatherForecast() {
-                let url_ = this.baseUrl + "/WeatherForecast";
+            getWeatherForecast(filtr) {
+                let url_ = this.baseUrl + "/WeatherForecast?";
+                if (filtr === null)
+                    throw new Error("The parameter 'filtr' cannot be null.");
+                else if (filtr !== undefined)
+                    url_ += "filtr=" + encodeURIComponent("" + filtr) + "&";
                 url_ = url_.replace(/[?&]$/, "");
                 let options_ = {
                     method: "GET",

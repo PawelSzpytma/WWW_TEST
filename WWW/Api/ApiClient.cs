@@ -54,23 +54,28 @@ namespace WWW.Api
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.HttpMethod("Get")]
-        [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.MethodUrl("WeatherForecast")]
+        [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.MethodUrl("WeatherForecast/{filtr}")]
         [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.AutoRefreshKey("WeatherForecast")]
-        public System.Collections.Generic.ICollection<WeatherForecast> GetWeatherForecast()
+        public System.Collections.Generic.ICollection<WeatherForecast> GetWeatherForecast(string filtr = null)
         {
-            return System.Threading.Tasks.Task.Run(async () => await GetWeatherForecastAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Run(async () => await GetWeatherForecastAsync(filtr, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.HttpMethod("Get")]
-        [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.MethodUrl("WeatherForecast")]
+        [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.MethodUrl("WeatherForecast/{filtr}")]
         [DotVVM.Framework.Configuration.RestApiRegistrationHelpers.AutoRefreshKey("WeatherForecast")]
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WeatherForecast>> GetWeatherForecastAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WeatherForecast>> GetWeatherForecastAsync(string filtr = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/WeatherForecast");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/WeatherForecast?");
+            if (filtr != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("filtr") + "=").Append(System.Uri.EscapeDataString(ConvertToString(filtr, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
     
             var client_ = _httpClient;
             var disposeClient_ = false;

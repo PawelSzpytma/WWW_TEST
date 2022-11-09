@@ -19,15 +19,22 @@ namespace API.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> Get(string? filtr)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var list = Enumerable.Range(0, 10).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.Date,
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Summary = Summaries[index]
+            }).ToList();
+            
+            if(!string.IsNullOrEmpty(filtr))
+            {
+                list = list.Where(c => c.Summary == filtr).ToList();
+            }
+
+
+            return list;
         }
     }
 }

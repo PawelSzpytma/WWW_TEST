@@ -8,10 +8,9 @@ namespace WWW.Controls
     [ControlMarkupOptions(AllowContent = true)]
     public class ButtonSelf : CompositeControl
     {
-
         public DotvvmControl GetContents([DefaultValue(null)] ValueOrBinding<string> Text, ICommandBinding Click = null)
         {
-            return new Button().AddCssClass("btn btn-primary").SetProperty(c => c.ButtonTagName, ButtonTagName.button).SetProperty(c => c.Text, Text).SetProperty(c=>c.Click, Click);
+            return new Button().AddCssClass("btn btn-primary").SetProperty(c => c.ButtonTagName, ButtonTagName.button).SetProperty(c => c.Text, Text).SetProperty(c=>c.Click, Click).SetProperty(PostBack.HandlersProperty, this.GetValue(PostBack.HandlersProperty));
         }
     }
 }

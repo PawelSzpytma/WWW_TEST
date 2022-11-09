@@ -26,10 +26,15 @@ namespace WWW.Api {
         }
     
         /**
+         * @param filtr (optional) 
          * @return Success
          */
-        getWeatherForecast(): Promise<WeatherForecast[]> {
-            let url_ = this.baseUrl + "/WeatherForecast";
+        getWeatherForecast(filtr?: string | undefined): Promise<WeatherForecast[]> {
+            let url_ = this.baseUrl + "/WeatherForecast?";
+            if (filtr === null)
+                throw new Error("The parameter 'filtr' cannot be null.");
+            else if (filtr !== undefined)
+                url_ += "filtr=" + encodeURIComponent("" + filtr) + "&";
             url_ = url_.replace(/[?&]$/, "");
     
             let options_ = <RequestInit>{

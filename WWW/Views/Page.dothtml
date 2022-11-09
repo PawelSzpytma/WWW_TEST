@@ -1,7 +1,8 @@
-﻿@viewModel WWW.ViewModels.DefaultViewModel, WWW
+﻿@viewModel WWW.ViewModels.PageViewModel, WWW
 @masterPage Views/MasterPage.dotmaster
+
 <dot:Content ContentPlaceHolderID="MainContent">
-    <h1>Page 2</h1>
+    <h1>Page 1</h1>
     <div class="content">
         <div class="row">
             <div class="col">
@@ -13,7 +14,8 @@
                 </self:ButtonSelf>
             </div>
         </div>
-        <dot:ComboBox DataSource="{value: list }" SelectedValue="{value: sellectcombo }" ItemValueBinding="{value: _this }" ItemTextBinding="{value: _this }"></dot:ComboBox>
+        <dot:ComboBox DataSource="{value: list }" SelectedValue="{value: sellectcombo }" ItemValueBinding="{value: _this }" ItemTextBinding="{value: _this }">
+        </dot:ComboBox>
         <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetWeatherForecast(_root.sellectcombo), _root.sellectcombo)}">
             <ItemTemplate>
                 <p>{{value: Summary}} - {{value: Date}}</p>
@@ -21,3 +23,4 @@
         </dot:Repeater>
     </div>
 </dot:Content>
+
