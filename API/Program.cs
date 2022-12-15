@@ -1,3 +1,4 @@
+using API;
 using DotVVM.Core.Common;
 using DotVVM.Framework.Api.Swashbuckle.AspNetCore;
 using Microsoft.AspNetCore.Localization;
@@ -16,6 +17,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
       .AddNewtonsoftJson(options =>
       {
           options.SerializerSettings.Converters.Add(new StringEnumConverter());
+          options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+          
       });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
@@ -37,8 +40,11 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
+    
+    options.SupportNonNullableReferenceTypes();
     options.EnableDotvvmIntegration();
     options.UseInlineDefinitionsForEnums();
+    options.ParameterFilter<SwaggerNullableParameterFilter>();
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
@@ -57,7 +63,7 @@ builder.Services.AddSwaggerGen(options =>
         },
 
     });
-
+    
     List<string> xmlFiles = Directory.GetFiles(AppContext.BaseDirectory, "*.xml", SearchOption.TopDirectoryOnly).ToList();
     xmlFiles.ForEach(xmlFile => options.IncludeXmlComments(xmlFile));
 });

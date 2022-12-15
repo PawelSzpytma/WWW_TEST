@@ -14,7 +14,6 @@
 
     <dot:SpaContentPlaceHolder ID="MainContent" />
 
-    <dot:RouteLink RouteName="Default">Page 1</dot:RouteLink>
-    <dot:RouteLink RouteName="Page">Page 2</dot:RouteLink>
+
 </body>
 </html>

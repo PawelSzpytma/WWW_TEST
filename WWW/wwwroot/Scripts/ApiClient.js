@@ -25,15 +25,13 @@ var WWW;
                 this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
             }
             /**
-             * @param filtr (optional)
+             * @param searchRequest (optional)
              * @return Success
              */
-            getWeatherForecast(filtr) {
-                let url_ = this.baseUrl + "/WeatherForecast?";
-                if (filtr === null)
-                    throw new Error("The parameter 'filtr' cannot be null.");
-                else if (filtr !== undefined)
-                    url_ += "filtr=" + encodeURIComponent("" + filtr) + "&";
+            getGetWeatherForecast(searchRequest) {
+                let url_ = this.baseUrl + "/WeatherForecast/GetWeatherForecast?";
+                if (searchRequest !== undefined && searchRequest !== null)
+                    url_ += "searchRequest=" + encodeURIComponent("" + searchRequest) + "&";
                 url_ = url_.replace(/[?&]$/, "");
                 let options_ = {
                     method: "GET",
@@ -44,10 +42,10 @@ var WWW;
                 return this.transformOptions(options_).then(transformedOptions_ => {
                     return this.http.fetch(url_, transformedOptions_);
                 }).then((_response) => {
-                    return this.processGetWeatherForecast(_response);
+                    return this.processGetGetWeatherForecast(_response);
                 });
             }
-            processGetWeatherForecast(response) {
+            processGetGetWeatherForecast(response) {
                 const status = response.status;
                 let _headers = {};
                 if (response.headers && response.headers.forEach) {

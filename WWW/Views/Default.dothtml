@@ -5,18 +5,15 @@
     <div class="content">
         <div class="row">
             <div class="col">
-                <self:ButtonSelf Text="Check" Click="{command: _root.Check()}">
-                    <PostBack.Handlers>
-                        <dot:ConfirmPostBackHandler Message="Do you really want to submit the form?" />
-                    </PostBack.Handlers>
-
+                <dot:TextBox Text="{value: search.searchRequest}" />
+                <self:ButtonSelf Text="Seaarch" Click="{staticCommand:  _root.Refresh=_root.Refresh+1;}">
                 </self:ButtonSelf>
             </div>
         </div>
-        <dot:ComboBox DataSource="{value: list }" SelectedValue="{value: sellectcombo }" ItemValueBinding="{value: _this }" ItemTextBinding="{value: _this }"></dot:ComboBox>
-        <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetWeatherForecast(_root.sellectcombo), _root.sellectcombo)}">
+        <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
             <ItemTemplate>
                 <p>{{value: Summary}} - {{value: Date}}</p>
+                <p><dot:Button Click="{command: _root.Check("")}" Text="Check"></p>
             </ItemTemplate>
         </dot:Repeater>
     </div>

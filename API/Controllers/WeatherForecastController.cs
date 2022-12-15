@@ -18,8 +18,8 @@ namespace API.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get(string? filtr)
+        [HttpGet("GetWeatherForecast")]
+        public IEnumerable<WeatherForecast> Get([FromQuery] RequestSearch? request)
         {
             var list = Enumerable.Range(0, 10).Select(index => new WeatherForecast
             {
@@ -28,9 +28,9 @@ namespace API.Controllers
                 Summary = Summaries[index]
             }).ToList();
             
-            if(!string.IsNullOrEmpty(filtr))
+            if(!string.IsNullOrEmpty(request.searchRequest))
             {
-                list = list.Where(c => c.Summary == filtr).ToList();
+                list = list.Where(c => c.Summary.Contains(request.searchRequest)).ToList();
             }
 
 

@@ -26,15 +26,13 @@ namespace WWW.Api {
         }
     
         /**
-         * @param filtr (optional) 
+         * @param searchRequest (optional) 
          * @return Success
          */
-        getWeatherForecast(filtr?: string | undefined): Promise<WeatherForecast[]> {
-            let url_ = this.baseUrl + "/WeatherForecast?";
-            if (filtr === null)
-                throw new Error("The parameter 'filtr' cannot be null.");
-            else if (filtr !== undefined)
-                url_ += "filtr=" + encodeURIComponent("" + filtr) + "&";
+        getGetWeatherForecast(searchRequest?: string | null | undefined): Promise<WeatherForecast[]> {
+            let url_ = this.baseUrl + "/WeatherForecast/GetWeatherForecast?";
+            if (searchRequest !== undefined && searchRequest !== null)
+                url_ += "searchRequest=" + encodeURIComponent("" + searchRequest) + "&";
             url_ = url_.replace(/[?&]$/, "");
     
             let options_ = <RequestInit>{
@@ -47,11 +45,11 @@ namespace WWW.Api {
             return this.transformOptions(options_).then(transformedOptions_ => {
                 return this.http.fetch(url_, transformedOptions_);
             }).then((_response: Response) => {
-                return this.processGetWeatherForecast(_response);
+                return this.processGetGetWeatherForecast(_response);
             });
         }
     
-        protected processGetWeatherForecast(response: Response): Promise<WeatherForecast[]> {
+        protected processGetGetWeatherForecast(response: Response): Promise<WeatherForecast[]> {
             const status = response.status;
             let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
             if (status === 200) {

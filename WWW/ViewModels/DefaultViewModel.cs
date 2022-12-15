@@ -8,17 +8,24 @@ namespace WWW.ViewModels
 {
     public class DefaultViewModel : MasterPageViewModel
     {
-		public string sellectcombo { get; set; } = "Mild";
+        public RequestSearch search { get; set; }
 
-        public List<string> list { get; set; } = new List<string>() { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+		public int Refresh { get; set; }
         public string Title { get; set;}
 
-		public DefaultViewModel()
+        public override Task Init()
+        {
+            search=new RequestSearch();
+            return base.Init();
+
+        }
+
+        public DefaultViewModel()
 		{
 			Title = "Hello from DotVVM!";
 		}
 
-		public void Check()
+		public void Check(string name)
 		{
 
 		}
