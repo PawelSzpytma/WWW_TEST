@@ -10,10 +10,13 @@
                 </self:ButtonSelf>
             </div>
         </div>
-        <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
+        <dot:Repeater DataSource="{value:  list=  _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
             <ItemTemplate>
                 <p>{{value: Summary}} - {{value: Date}}</p>
-                <p><dot:Button Click="{command: _root.Check("")}" Text="Check"></p>
+                <p Visible="{value: _collection.IsEven}">Even</p>
+                <p Visible="{value: _collection.IsOdd}">Odd</p>
+                <p Visible="{value: _collection.IsFirst}">Odd</p>
+                <p>{{value: _collection.Index}}</p>
             </ItemTemplate>
         </dot:Repeater>
     </div>
