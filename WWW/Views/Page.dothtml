@@ -16,12 +16,7 @@
         </div>
         <dot:ComboBox DataSource="{value: list }" SelectedValue="{value: sellectcombo }" ItemValueBinding="{value: _this }" ItemTextBinding="{value: _this }" EmptyItemText="Wybierz">
         </dot:ComboBox>
-        <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetWeatherForecast(_root.sellectcombo), _root.sellectcombo)}">
-            <ItemTemplate>
-                <p>{{value: Summary}} - {{value: Date}}</p>
-                
-            </ItemTemplate>
-        </dot:Repeater>
+       
     </div>
 </dot:Content>
 

@@ -4,12 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
 using WWW.Api;
+using WWW.Controls.Models;
 
 namespace WWW.ViewModels
 {
     public class DefaultViewModel : MasterPageViewModel
     {
         public RequestSearch search { get; set; }
+
+        public ModalOne modalOne { get; set; }
+
+        public ModalTwo modalTwo { get; set; }
 
         public int Refresh { get; set; }
         public string Title { get; set; }
@@ -18,7 +23,9 @@ namespace WWW.ViewModels
 
         public override Task Init()
         {
-            search=new RequestSearch();
+            modalOne=new ModalOne();
+            modalTwo=new ModalTwo();
+            search =new RequestSearch();
             list = new List<WeatherForecast>();
             return base.Init();
 

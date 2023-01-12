@@ -1,1 +1,18 @@
 ﻿@viewModel WWW.Controls.Models.ModalOne, WWW
+
+
+
+<bs:ModalDialog EnableAnimation="true" UseBackdrop="false" Size="Extralarge" CloseOnBackdropClick="false" CloseOnEscape="false" IncludeInPage="{{value: _root.Visible}}"  IsDisplayed="{{value:_root.Visible}}">
+    <HeaderTemplate>
+        <h6>Modal one</h6>
+        <bs:CloseButton Validation.Enabled="false" Events.Click="{staticCommand: _root.Visible=false;}" />
+    </HeaderTemplate>
+    <ContentTemplate>
+        <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
+            <ItemTemplate>
+                <p>{{value: Summary}} - {{value: Date}}</p>
+
+            </ItemTemplate>
+        </dot:Repeater>
+    </ContentTemplate>
+</bs:ModalDialog>

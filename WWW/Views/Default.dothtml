@@ -3,7 +3,15 @@
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1>Page 2</h1>
     <div class="content">
-        <div class="row">
+        <div class="row mb-4">
+            <div class="col">
+                <self:ButtonSelf Text="Open modal one" Click="{staticCommand:  _root.modalOne.Visible=true;}">
+                </self:ButtonSelf>
+                <self:ButtonSelf Text="Open modal two" Click="{staticCommand:  _root.modalTwo.Visible=true;}">
+                </self:ButtonSelf>
+            </div>
+        </div>
+        <%--<div class="row">
             <div class="col">
                 <dot:TextBox Text="{value: search.searchRequest}" />
                 <self:ButtonSelf Text="Seaarch" Click="{staticCommand:  _root.Refresh=_root.Refresh+1;}">
@@ -13,11 +21,13 @@
         <dot:Repeater DataSource="{value:  list=  _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
             <ItemTemplate>
                 <p>{{value: Summary}} - {{value: Date}}</p>
-                <p Visible="{value: _collection.IsEven}">Even</p>
-                <p Visible="{value: _collection.IsOdd}">Odd</p>
-                <p Visible="{value: _collection.IsFirst}">Odd</p>
                 <p>{{value: _collection.Index}}</p>
             </ItemTemplate>
-        </dot:Repeater>
+        </dot:Repeater>--%>
     </div>
+
+    <modal:One DataContext="{value: modalOne}">
+    </modal:One>
+    <modal:Two DataContext="{value: modalTwo}">
+    </modal:Two>
 </dot:Content>

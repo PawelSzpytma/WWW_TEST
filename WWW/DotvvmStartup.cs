@@ -1,4 +1,5 @@
 ﻿using DotVVM.Framework.Configuration;
+using DotVVM.Framework.Controls.Bootstrap4;
 using DotVVM.Framework.ResourceManagement;
 using DotVVM.Framework.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +14,11 @@ namespace WWW
         {
             config.RegisterApiClient(typeof(ApiClient), "https://localhost:7153", "wwwroot/Scripts/ApiClient.js", "_ApiSelf");
 
-           
+            config.AddBootstrap4Configuration(new DotvvmBootstrapOptions
+            {
+                IncludeBootstrapResourcesInPage = false,
+                IncludeJQueryResourceInPage = false
+            });
 
             ConfigureRoutes(config, applicationPath);
             ConfigureControls(config, applicationPath);
@@ -30,7 +35,8 @@ namespace WWW
         private void ConfigureControls(DotvvmConfiguration config, string applicationPath)
         {
             config.Markup.AddCodeControls("self", typeof(WWW.Controls.ButtonSelf));
-            // register code-only controls and markup controls
+            config.Markup.AddMarkupControl("modal", "One", "Controls/ModalOne.dotcontrol");
+            config.Markup.AddMarkupControl("modal", "Two", "Controls/ModalTwo.dotcontrol");
         }
 
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)
