@@ -8,11 +8,13 @@
         <bs:CloseButton Validation.Enabled="false" Events.Click="{staticCommand: _root.Visible=false;}" />
     </HeaderTemplate>
     <ContentTemplate>
-        <dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
+        <bs:DateTimePicker SelectedDate="{value: date}" />
+        <%--<dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
             <ItemTemplate>
                 <p>{{value: Summary}} - {{value: Date}}</p>
 
             </ItemTemplate>
-        </dot:Repeater>
+        </dot:Repeater>--%>
+        <bs:Button Click="{command: Save() }" Text="Save"></bs:Button>
     </ContentTemplate>
 </bs:ModalDialog>

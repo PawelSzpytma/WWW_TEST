@@ -7,8 +7,8 @@
             <div class="col">
                 <self:ButtonSelf Text="Open modal one" Click="{staticCommand:  _root.modalOne.Visible=true;}">
                 </self:ButtonSelf>
-                <self:ButtonSelf Text="Open modal two" Click="{staticCommand:  _root.modalTwo.Visible=true;}">
-                </self:ButtonSelf>
+                <%--<self:ButtonSelf Text="Open modal two" Click="{staticCommand:  _root.modalTwo.Visible=true;}">
+                </self:ButtonSelf>--%>
             </div>
         </div>
         <%--<div class="row">
@@ -28,6 +28,6 @@
 
     <modal:One DataContext="{value: modalOne}">
     </modal:One>
-    <modal:Two DataContext="{value: modalTwo}">
-    </modal:Two>
+    <%--<modal:Two DataContext="{value: modalTwo}">
+    </modal:Two>--%>
 </dot:Content>
