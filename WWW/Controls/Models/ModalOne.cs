@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using WWW.Api;
 
 namespace WWW.Controls.Models
@@ -8,13 +9,14 @@ namespace WWW.Controls.Models
     {
         public RequestSearch search { get; set; }
 
-        public DateTime? date { get; set; } 
+     public ChildModel childModel { get;  set; }
 
         public ModalOne()
         {
             search = new RequestSearch();
             list = new List<WeatherForecast>();
-            date = DateTime.Now;
+            childModel=new ChildModel();
+            childModel.date = DateTime.Now;
         }
 
         public bool Visible { get; set; }

@@ -8,13 +8,8 @@
         <bs:CloseButton Validation.Enabled="false" Events.Click="{staticCommand: _root.Visible=false;}" />
     </HeaderTemplate>
     <ContentTemplate>
-        <bs:DateTimePicker SelectedDate="{value: date}" />
-        <%--<dot:Repeater DataSource="{value: _api.RefreshOnChange(_ApiSelf.GetGetWeatherForecast(search.searchRequest), _root.Refresh)}">
-            <ItemTemplate>
-                <p>{{value: Summary}} - {{value: Date}}</p>
-
-            </ItemTemplate>
-        </dot:Repeater>--%>
-        <bs:Button Click="{command: Save() }" Text="Save"></bs:Button>
+        <bs:DateTimePicker SelectedDate="{value: childModel.date}" Validator.Value="{value: childModel.date }"  Validator.InvalidCssClass="invalid"/>
+    
+        <bs:Button Click="{command: Save() }" Text="Save" Validation.Target="{value: childModel}"></bs:Button>
     </ContentTemplate>
 </bs:ModalDialog>
