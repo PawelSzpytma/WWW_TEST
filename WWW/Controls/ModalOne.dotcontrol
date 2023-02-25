@@ -8,8 +8,8 @@
         <bs:CloseButton Validation.Enabled="false" Events.Click="{staticCommand: _root.Visible=false;}" />
     </HeaderTemplate>
     <ContentTemplate>
-        <bs:DateTimePicker SelectedDate="{value: childModel.date}" Validator.Value="{value: childModel.date }"  Validator.InvalidCssClass="invalid"/>
-    
-        <bs:Button Click="{command: Save() }" Text="Save" Validation.Target="{value: childModel}"></bs:Button>
+        <bp:MultiSelect DataSource="{value: _ApiSelf.GetGetCountries()}"
+                        SelectedValues="{value: SelectedCountries}"
+                        Placeholder="Select multiple countries" />
     </ContentTemplate>
 </bs:ModalDialog>

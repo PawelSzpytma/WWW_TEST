@@ -74,6 +74,53 @@ var WWW;
                 }
                 return Promise.resolve(null);
             }
+            /**
+             * @return Success
+             */
+            getGetCountries() {
+                let url_ = this.baseUrl + "/WeatherForecast/GetCountries";
+                url_ = url_.replace(/[?&]$/, "");
+                let options_ = {
+                    method: "GET",
+                    headers: {
+                        "Accept": "text/plain"
+                    }
+                };
+                return this.transformOptions(options_).then(transformedOptions_ => {
+                    return this.http.fetch(url_, transformedOptions_);
+                }).then((_response) => {
+                    return this.processGetGetCountries(_response);
+                });
+            }
+            processGetGetCountries(response) {
+                const status = response.status;
+                let _headers = {};
+                if (response.headers && response.headers.forEach) {
+                    response.headers.forEach((v, k) => _headers[k] = v);
+                }
+                ;
+                if (status === 200) {
+                    return response.text().then((_responseText) => {
+                        let result200 = null;
+                        let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                        if (Array.isArray(resultData200)) {
+                            result200 = [];
+                            for (let item of resultData200)
+                                result200.push(item);
+                        }
+                        else {
+                            result200 = null;
+                        }
+                        return result200;
+                    });
+                }
+                else if (status !== 200 && status !== 204) {
+                    return response.text().then((_responseText) => {
+                        return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+                    });
+                }
+                return Promise.resolve(null);
+            }
         }
         Api.ApiClient = ApiClient;
         class WeatherForecast {

@@ -64,6 +64,7 @@ namespace WWW
 		public void ConfigureServices(IDotvvmServiceCollection options)
         {
             options.AddDefaultTempStorages("temp");
+            options.AddBusinessPack(DotVVM.BusinessPack.BusinessPackTheme.Bootstrap4);
             options.AddHotReload();
 		}
     }

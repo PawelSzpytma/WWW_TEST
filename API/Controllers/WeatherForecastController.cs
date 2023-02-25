@@ -36,5 +36,13 @@ namespace API.Controllers
 
             return list;
         }
+
+        [HttpGet("GetCountries")]
+        public IEnumerable<string> Get()
+        {
+            return new List<string> {
+            "Czech Republic", "Slovakia", "United States"
+        };
+        }
     }
 }
