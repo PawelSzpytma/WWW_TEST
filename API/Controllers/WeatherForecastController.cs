@@ -32,7 +32,7 @@ namespace API.Controllers
             {
                 list = list.Where(c => c.Summary.Contains(request.searchRequest)).ToList();
             }
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             return list;
         }
