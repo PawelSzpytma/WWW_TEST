@@ -16,7 +16,7 @@
         </div>
         <dot:ComboBox DataSource="{value: list }" SelectedValue="{value: sellectcombo }" ItemValueBinding="{value: _this }" ItemTextBinding="{value: _this }" EmptyItemText="Wybierz">
         </dot:ComboBox>
-       
+     
     </div>
 </dot:Content>
 
