@@ -11,6 +11,7 @@
     </bs:RouteLink>
     <div class="content">
         <p>Info: {{value:  _root.Info}}</p>
-        <bs:Button  Click="{staticCommand: _js.Invoke("showTextPage1","DONE") }">Test</bs:Button>
+        <bs:Button Click="{staticCommand: _js.Invoke("showTextPage1","DONE") }">Test</bs:Button>
     </div>
+    <dot:NamedCommand Name="PageOneCommand" Command="{staticCommand: (string text) => _root.Info = text;}" />
 </dot:Content>
