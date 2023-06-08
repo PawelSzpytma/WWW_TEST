@@ -10,6 +10,6 @@ namespace WWW.ViewModels
     public class MasterPageViewModel : DotvvmViewModelBase
     {
 
-
+        public string Info { get; set; }
     }
 }

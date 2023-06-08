@@ -59,6 +59,10 @@ namespace WWW
             {
                 Location = new UrlResourceLocation("~/Resources/style.css")
             });
+
+            config.Resources.Register("moduleDlpro", new ScriptModuleResource(new UrlResourceLocation("~/Dotvvm.ExtendDlpro.js"))
+            {
+            });
         }
 
 		public void ConfigureServices(IDotvvmServiceCollection options)
