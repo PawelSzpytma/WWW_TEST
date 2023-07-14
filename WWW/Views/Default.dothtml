@@ -3,7 +3,7 @@
 @js moduleDlpro
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <bs:RouteLink RouteName="Default">
+    <bs:RouteLink RouteName="Default" Visible="{value: list_two.Any(w=>w==1) }">
         Page 1
     </bs:RouteLink>
     <bs:RouteLink RouteName="Page">
@@ -13,5 +13,5 @@
         <p>Info: {{value:  _root.Info}}</p>
         <bs:Button Click="{staticCommand: _js.Invoke("showTextPage1","DONE") }">Test</bs:Button>
     </div>
-    <dot:NamedCommand Name="PageOneCommand" Command="{staticCommand: (string text) => _root.Info = text;}" />
+    
 </dot:Content>

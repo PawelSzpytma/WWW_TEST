@@ -178,4 +178,9 @@
     <None Include="wwwroot\lib\jquery\jquery.slim.min.js" />
     <None Include="wwwroot\lib\jquery\jquery.slim.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="HiQPdfClient.NetCore">
+      <HintPath>..\..\DLSCHOOL\SCHOOL_SYSTEM_NEW\HiQPdfClient.NetCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
